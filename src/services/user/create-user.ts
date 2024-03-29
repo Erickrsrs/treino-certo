@@ -17,7 +17,7 @@ export class CreateUserService {
     name,
     email,
   }: CreateUserRequest): Promise<CreateUserResponse> {
-    const user = await this.usersRepository.createUser({ name, email })
+    const user = await this.usersRepository.create({ name, email })
 
     return { user }
   }

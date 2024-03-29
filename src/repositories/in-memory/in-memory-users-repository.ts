@@ -5,14 +5,14 @@ import { UsersRepository } from '../users-repository'
 export class InMemoryUsersRepository implements UsersRepository {
   public items: User[] = []
 
-  async createUser(user: Prisma.UserCreateInput): Promise<User> {
-    const newUser = {
+  async create(data: Prisma.UserCreateInput): Promise<User> {
+    const user = {
       id: String(randomUUID()),
-      ...user,
+      ...data,
       createdAt: new Date(),
     }
-    this.items.push(newUser)
+    this.items.push(user)
 
-    return newUser
+    return user
   }
 }
